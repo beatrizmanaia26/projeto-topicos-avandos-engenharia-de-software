@@ -1,5 +1,5 @@
 # projeto-topicos-avandos-engenharia-de-software
-## Intefgrantes do grupos:
+## Integrantes do grupos:
 -Beatriz Manaia Lourenço Berto RA:22.125.060-8 <br>
 -Letizia Baptistella 22.125.063-2 <br>
 -Manuella Filipe Peres 22.224.029-3 <br>
