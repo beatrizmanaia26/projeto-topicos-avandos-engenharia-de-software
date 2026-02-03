@@ -1,4 +1,9 @@
 # projeto-topicos-avandos-engenharia-de-software
+
+## Descrição
+Esse projeto tem por objetivo o desenvolvimento de uma aplicação voltada à venda de passagens aéreas e marítmicas. Por mekio dele, o processo de compra dessas passagens será facilitado e otimizado, sendo possível a realização a qulquer hora em qualquer lugar.
+
+
 ## Integrantes do grupos:
 -Beatriz Manaia Lourenço Berto RA:22.125.060-8 <br>
 -Letizia Baptistella 22.125.063-2 <br>
