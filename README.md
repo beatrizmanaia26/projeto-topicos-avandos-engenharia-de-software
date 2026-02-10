@@ -12,4 +12,5 @@ Esse projeto tem por objetivo o desenvolvimento e a gestão de uma aplicação v
 -Rafaela Altheman de Campos 22.125.062-4 <br>
 
 Framework: VUE
+
 Linguagem: HTML/CSS/Javascript
