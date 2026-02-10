@@ -1,4 +1,4 @@
-# -Oras
+# -Horas
 
 ## Descrição
 Esse projeto tem por objetivo o desenvolvimento e a gestão de uma aplicação voltada à venda de passagens aéreas e marítmicas. Por meio dele, o processo de compra dessas passagens será facilitado e otimizado, sendo possível a utilização a qualquer hora em qualquer lugar.
