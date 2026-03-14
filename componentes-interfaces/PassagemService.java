@@ -9,7 +9,7 @@ PassagemService
 import java.util.List;
 import java.util.Map;
 
-public interface IPassagem {
+public interface PassagemService {
     List<PassagemAerea> listarPassagensAereas();
     List<Passagem> filtrarPassagens(Map<String, String> filtros);
     Passagem obterPassagemPorId(int idPassagem);
