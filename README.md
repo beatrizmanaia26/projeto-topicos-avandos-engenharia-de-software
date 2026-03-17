@@ -15,16 +15,16 @@ Esse projeto tem por objetivo o desenvolvimento e a gestão de uma aplicação v
 
 ## Descrição do Projeto
 
-Este projeto implementa parte de um sistema de compra de passagens utilizando **arquitetura baseada em componentes e comunicação por interfaces**.
+Este projeto implementa parte de um sistema de compra de passagens utilizando arquitetura baseada em componentes e comunicação por interfaces.
 
 Foram implementados dois componentes principais:
 
 * **Componente de Passagens**
 * **Componente de Carrinho**
 
-O objetivo é demonstrar como dois componentes podem interagir **sem depender diretamente da implementação um do outro**, utilizando **interfaces como contrato de comunicação**.
+O objetivo é demonstrar como dois componentes podem interagir sem depender diretamente da implementação um do outro, utilizando interfaces como contrato de comunicação.
 
-A implementação foi realizada em **Java**, aplicando princípios de **baixo acoplamento e injeção de dependência**.
+A implementação foi realizada em Java, aplicando princípios de baixo acoplamento e injeção de dependência.
 
 ---
 
@@ -34,7 +34,7 @@ A implementação foi realizada em **Java**, aplicando princípios de **baixo ac
 
 O componente de Passagens é responsável por gerenciar as passagens disponíveis no sistema.
 
-Neste projeto foi implementado o tipo **PassagemAerea**, conforme definido no modelo arquitetural do sistema.
+Neste projeto foi implementado somente o tipo **PassagemAerea**.
 
 ### Responsabilidades
 
@@ -71,7 +71,7 @@ O componente de Carrinho é responsável por gerenciar as passagens selecionadas
 
 # Interfaces Fornecidas
 
-As interfaces fornecidas representam os **serviços que cada componente disponibiliza para outros componentes do sistema**.
+As interfaces fornecidas representam os serviços que cada componente disponibiliza para outros componentes do sistema.
 
 ## Interface `PassagemService`
 
@@ -80,7 +80,6 @@ Fornecida pelo componente de Passagens.
 Métodos disponíveis:
 
 * `listarPassagensAereas()`
-* `listarPassagensMaritimas()`
 * `filtrarPassagens(Map<String,String> filtros)`
 * `obterPassagemPorId(int idPassagem)`
 
@@ -105,7 +104,7 @@ Essa interface permite que outras partes do sistema manipulem o carrinho de comp
 
 # Interfaces Requeridas
 
-Interfaces requeridas são aquelas que **um componente precisa utilizar para acessar funcionalidades de outro componente**.
+Interfaces requeridas são aquelas que um componente precisa utilizar para acessar funcionalidades de outro componente.
 
 Neste projeto:
 
@@ -147,9 +146,9 @@ Assim, o carrinho não precisa saber como as passagens são armazenadas ou geren
 
 # Evitando Acoplamento Direto
 
-O acoplamento direto entre componentes foi evitado através do uso de **interfaces e injeção de dependência**.
+O acoplamento direto entre componentes foi evitado através do uso de interfaces e injeção de dependência.
 
-O componente Carrinho **não depende diretamente da classe `PassagemAerea`**, mas apenas da interface `PassagemService`.
+O componente Carrinho não depende diretamente da classe `PassagemAerea`, mas apenas da interface `PassagemService`.
 
 Exemplo:
 
