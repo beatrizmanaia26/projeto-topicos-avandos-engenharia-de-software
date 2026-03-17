@@ -25,7 +25,7 @@ public class Main {
                 new PassagemAerea(4, "São Paulo", "Rio", 450, "Econômica", 12, "Gol", hoje)
         );
 
-        // criação do carrinho com injeção de dependência
+        // criação do carrinho 
         CarrinhoService carrinho = new Carrinho(passagemService);
         int idUsuario = 1;
 
@@ -39,11 +39,12 @@ public class Main {
                     " | Preço: " + p.getPreco() +
                     " | Classe: " + p.getClasse() +
                     " | Companhia: " + p.getCompanhia() +
-                    " | Quantidade: " + p.getQtd()
+                    " | Quantidade: " + p.getQtd() +
+                    " | Data: " + p.getData()
             );
         }
 
-        // FILTRO POR DESTINO
+        //FILTRO POR DESTINO
         System.out.println("\nFILTRAR PASSAGENS (Destino = Rio)");
         Map<String, String> filtros = new HashMap<>();
         filtros.put("destino", "Rio");
@@ -58,7 +59,7 @@ public class Main {
             );
         }
 
-        // FILTRO POR COMPANHIA
+        //FILTRO POR COMPANHIA
         System.out.println("\nFILTRAR PASSAGENS (Companhia = Gol)");
         filtros.clear();
         filtros.put("companhia", "Gol");
@@ -74,7 +75,7 @@ public class Main {
             );
         }
 
-        // FILTRO POR CLASSE
+        //FILTRO POR CLASSE
         System.out.println("\nFILTRAR PASSAGENS (Classe = Econômica)");
         filtros.clear();
         filtros.put("classe", "Econômica");
@@ -89,7 +90,7 @@ public class Main {
             );
         }
 
-        // FILTRO COMBINADO
+        //FILTRO COMBINADO
         System.out.println("\nFILTRAR PASSAGENS (Origem = São Paulo + Destino = Rio)");
         filtros.clear();
         filtros.put("origem", "São Paulo");
@@ -105,7 +106,7 @@ public class Main {
             );
         }
 
-        // TESTAR CARRINHO
+        // CARRINHO
         System.out.println("\nADICIONANDO PASSAGENS AO CARRINHO");
         carrinho.adicionarItem(idUsuario, 1, 1);
         carrinho.adicionarItem(idUsuario, 2, 2);
@@ -117,10 +118,12 @@ public class Main {
         for (int i = 0; i < itensCarrinho.size(); i++) {
             Passagem p = itensCarrinho.get(i);
             System.out.println(
-                    "Item " + i +
-                    " | " + p.getOrigem() +
+                    "Item " + i + " " + 
+                    p.getOrigem() +
                     " -> " + p.getDestino() +
-                    " | Preço: " + p.getPreco()
+                    " | Companhia: " + p.getCompanhia() +
+                    " | Preço: " + p.getPreco() +
+                    " | Data: " + p.getData()
             );
         }
 
@@ -128,7 +131,7 @@ public class Main {
         double total = carrinho.calcularTotal(idUsuario);
         System.out.println("\nTOTAL DO CARRINHO: " + total);
 
-        // Remover item
+        // Remover passagem
         System.out.println("\nREMOVENDO ITEM 0 DO CARRINHO");
         carrinho.removerItem(idUsuario, 0);
         System.out.println("\nCARRINHO ATUALIZADO");
@@ -137,10 +140,12 @@ public class Main {
         for (int i = 0; i < itensCarrinho.size(); i++) {
             Passagem p = itensCarrinho.get(i);
             System.out.println(
-                    "Item " + i +
-                    " | " + p.getOrigem() +
+                    "Item " + i + " "
+                    p.getOrigem() +
                     " -> " + p.getDestino() +
-                    " | Preço: " + p.getPreco()
+                    " | Companhia: " + p.getCompanhia() +
+                    " | Preço: " + p.getPreco() +
+                    " | Data: " + p.getData()
             );
         }
         System.out.println("\nTOTAL ATUALIZADO: " + carrinho.calcularTotal(idUsuario));
