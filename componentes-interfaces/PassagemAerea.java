@@ -1,17 +1,17 @@
 import java.util.*;
+import java.util.Date;
 
 public class PassagemAerea extends Passagem implements PassagemService {
 
     private List<PassagemAerea> passagens = new ArrayList<>();
 
-    public PassagemAerea(int id, String origem, String destino, double preco) {
-        super(id, origem, destino, preco);
+    public PassagemAerea(int id, String origem, String destino, double preco, String classe, int qtd, String companhia, Date data) {
+        super(id, origem, destino, preco, classe, qtd, companhia, data);
     }
 
     public PassagemAerea() {
-        super(0, "", "", 0);
+        super(0, "", "", 0, "", 1, "", new Date());
     }
-
     public void adicionarPassagem(PassagemAerea p) {
         passagens.add(p);
     }
@@ -30,13 +30,38 @@ public class PassagemAerea extends Passagem implements PassagemService {
 
             boolean match = true;
 
+            if (filtros.containsKey("id") &&
+                p.getId() != Integer.parseInt(filtros.get("id"))) {
+                match = false;
+            }
+
             if (filtros.containsKey("origem") &&
-               !p.getOrigem().equalsIgnoreCase(filtros.get("origem"))) {
+                !p.getOrigem().equalsIgnoreCase(filtros.get("origem"))) {
                 match = false;
             }
 
             if (filtros.containsKey("destino") &&
-               !p.getDestino().equalsIgnoreCase(filtros.get("destino"))) {
+                !p.getDestino().equalsIgnoreCase(filtros.get("destino"))) {
+                match = false;
+            }
+
+            if (filtros.containsKey("preco") &&
+                p.getPreco() != Double.parseDouble(filtros.get("preco"))) {
+                match = false;
+            }
+
+            if (filtros.containsKey("classe") &&
+                !p.getClasse().equalsIgnoreCase(filtros.get("classe"))) {
+                match = false;
+            }
+
+            if (filtros.containsKey("qtd") &&
+                p.getQtd() != Integer.parseInt(filtros.get("qtd"))) {
+                match = false;
+            }
+
+            if (filtros.containsKey("companhia") &&
+                !p.getCompanhia().equalsIgnoreCase(filtros.get("companhia"))) {
                 match = false;
             }
 

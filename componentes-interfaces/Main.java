@@ -6,46 +6,47 @@ public class Main {
 
         PassagemAerea passagemService = new PassagemAerea();
 
+        Date hoje = new Date();
+
         // adicionando passagens de teste
         passagemService.adicionarPassagem(
-                new PassagemAerea(1, "São Paulo", "Rio", 500)
+                new PassagemAerea(1, "São Paulo", "Rio", 500, "Econômica", 10, "Latam", hoje)
         );
 
         passagemService.adicionarPassagem(
-                new PassagemAerea(2, "São Paulo", "Salvador", 900)
+                new PassagemAerea(2, "São Paulo", "Salvador", 900, "Executiva", 5, "Gol", hoje)
         );
 
         passagemService.adicionarPassagem(
-                new PassagemAerea(3, "Rio", "Recife", 800)
+                new PassagemAerea(3, "Rio", "Recife", 800, "Econômica", 8, "Azul", hoje)
         );
 
         passagemService.adicionarPassagem(
-                new PassagemAerea(4, "São Paulo", "Rio", 450)
+                new PassagemAerea(4, "São Paulo", "Rio", 450, "Econômica", 12, "Gol", hoje)
         );
 
         // criação do carrinho com injeção de dependência
         CarrinhoService carrinho = new Carrinho(passagemService);
-
         int idUsuario = 1;
 
-        // Listar todas as passagens aéreas
+        // Listar todas as passagens
         System.out.println("\nPASSAGENS AÉREAS DISPONÍVEIS");
-
         for (PassagemAerea p : passagemService.listarPassagensAereas()) {
             System.out.println(
                     "ID: " + p.getId() +
                     " | " + p.getOrigem() +
                     " -> " + p.getDestino() +
-                    " | Preço: " + p.getPreco()
+                    " | Preço: " + p.getPreco() +
+                    " | Classe: " + p.getClasse() +
+                    " | Companhia: " + p.getCompanhia() +
+                    " | Quantidade: " + p.getQtd()
             );
         }
 
-        // Filtrar passagens
+        // FILTRO POR DESTINO
         System.out.println("\nFILTRAR PASSAGENS (Destino = Rio)");
-
         Map<String, String> filtros = new HashMap<>();
         filtros.put("destino", "Rio");
-
         List<Passagem> filtradas = passagemService.filtrarPassagens(filtros);
 
         for (Passagem p : filtradas) {
@@ -57,36 +58,64 @@ public class Main {
             );
         }
 
-        // Filtrar por preço
-        System.out.println("\nFILTRAR PASSAGENS (Preço <= 600)");
+        // FILTRO POR COMPANHIA
+        System.out.println("\nFILTRAR PASSAGENS (Companhia = Gol)");
+        filtros.clear();
+        filtros.put("companhia", "Gol");
+        filtradas = passagemService.filtrarPassagens(filtros);
 
-        for (PassagemAerea p : passagemService.listarPassagensAereas()) {
-
-            if (p.getPreco() <= 600) {
-                System.out.println(
-                        "ID: " + p.getId() +
-                        " | " + p.getOrigem() +
-                        " -> " + p.getDestino() +
-                        " | Preço: " + p.getPreco()
-                );
-            }
+        for (Passagem p : filtradas) {
+            System.out.println(
+                    "ID: " + p.getId() +
+                    " | " + p.getOrigem() +
+                    " -> " + p.getDestino() +
+                    " | Companhia: " + p.getCompanhia() +
+                    " | Preço: " + p.getPreco()
+            );
         }
 
-        // Testar carrinho
-        System.out.println("\nADICIONANDO PASSAGENS AO CARRINHO");
+        // FILTRO POR CLASSE
+        System.out.println("\nFILTRAR PASSAGENS (Classe = Econômica)");
+        filtros.clear();
+        filtros.put("classe", "Econômica");
+        filtradas = passagemService.filtrarPassagens(filtros);
 
+        for (Passagem p : filtradas) {
+            System.out.println(
+                    "ID: " + p.getId() +
+                    " | " + p.getOrigem() +
+                    " -> " + p.getDestino() +
+                    " | Classe: " + p.getClasse()
+            );
+        }
+
+        // FILTRO COMBINADO
+        System.out.println("\nFILTRAR PASSAGENS (Origem = São Paulo + Destino = Rio)");
+        filtros.clear();
+        filtros.put("origem", "São Paulo");
+        filtros.put("destino", "Rio");
+        filtradas = passagemService.filtrarPassagens(filtros);
+
+        for (Passagem p : filtradas) {
+            System.out.println(
+                    "ID: " + p.getId() +
+                    " | " + p.getOrigem() +
+                    " -> " + p.getDestino() +
+                    " | Preço: " + p.getPreco()
+            );
+        }
+
+        // TESTAR CARRINHO
+        System.out.println("\nADICIONANDO PASSAGENS AO CARRINHO");
         carrinho.adicionarItem(idUsuario, 1, 1);
         carrinho.adicionarItem(idUsuario, 2, 2);
 
         // Listar carrinho
         System.out.println("\nITENS NO CARRINHO");
-
         List<Passagem> itensCarrinho = carrinho.listarItens(idUsuario);
 
         for (int i = 0; i < itensCarrinho.size(); i++) {
-
             Passagem p = itensCarrinho.get(i);
-
             System.out.println(
                     "Item " + i +
                     " | " + p.getOrigem() +
@@ -97,7 +126,6 @@ public class Main {
 
         // Calcular total
         double total = carrinho.calcularTotal(idUsuario);
-
         System.out.println("\nTOTAL DO CARRINHO: " + total);
 
         // Remover item
