@@ -28,7 +28,11 @@ A implementação foi realizada em Java, aplicando princípios de baixo acoplame
 
 ---
 
-# Componentes Implementados
+# LAB4: Componentes Implementados
+
+# OBSERVAÇAO SOBRE FLUXO DOS LABORATÓRIOS:
+
+Inicialmente, consideramos que fariamos com framewoek VUE... porém conforme fomos tendo mais conhecimento da matéria e dos critérios exigidos pela disciplina, percebemos que nossa ideia de implementação trazia uma dificuldade desnecessária para a implementação do projeto. Dessa forma, conversamos com a professora e concordamos em seguir a implementação em java, que é mais direcionada às necessidades da matéria, além disso, fomos instruídos pela professora para apenas implementar as passagens aérea.
 
 ## 1. Componente de Passagens
 
