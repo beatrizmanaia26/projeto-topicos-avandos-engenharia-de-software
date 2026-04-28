@@ -1,5 +1,7 @@
 import java.util.Date;
 
+//preferencias da passagem 
+
 public class Passagem {
     protected int id;
     protected String origem;
@@ -9,8 +11,9 @@ public class Passagem {
     protected int qtd;
     protected String companhia;
     protected Date data;
+    protected String assento;
 
-    public Passagem(int id, String origem, String destino, double preco, String classe, int qtd, String companhia, Date data) {
+    public Passagem(int id, String origem, String destino, double preco, String classe, int qtd, String companhia, Date data, String assento) {
         this.id = id;
         this.origem = origem;
         this.destino = destino;
@@ -19,6 +22,7 @@ public class Passagem {
         this.qtd = qtd;
         this.companhia = companhia;
         this.data = data;
+        this.assento = assento;
     }
 
     public int getId() {
@@ -51,5 +55,9 @@ public class Passagem {
 
     public Date getData() {
         return data;
+    }
+
+    public String getAssento() {
+        return assento;
     }
 }

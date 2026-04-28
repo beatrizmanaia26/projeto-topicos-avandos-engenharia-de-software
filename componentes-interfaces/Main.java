@@ -1,4 +1,5 @@
 import java.util.*;
+import com.google.gson.Gson; 
 
 public class Main {
 
@@ -10,39 +11,32 @@ public class Main {
 
         // adicionando passagens de teste
         passagemService.adicionarPassagem(
-                new PassagemAerea(1, "São Paulo", "Rio", 500, "Econômica", 10, "Latam", hoje)
+                new PassagemAerea(1, "São Paulo", "Rio", 500, "Econômica", 10, "Latam", hoje,"A1")
         );
 
         passagemService.adicionarPassagem(
-                new PassagemAerea(2, "São Paulo", "Salvador", 900, "Executiva", 5, "Gol", hoje)
+               new PassagemAerea(2, "São Paulo", "Rio", 500, "Econômica", 10, "Latam", hoje, "A1")
         );
 
         passagemService.adicionarPassagem(
-                new PassagemAerea(3, "Rio", "Recife", 800, "Econômica", 8, "Azul", hoje)
+               new PassagemAerea(3, "São Paulo", "Rio", 500, "Econômica", 10, "Latam", hoje,"A1")
         );
 
         passagemService.adicionarPassagem(
-                new PassagemAerea(4, "São Paulo", "Rio", 450, "Econômica", 12, "Gol", hoje)
+                new PassagemAerea(4, "São Paulo", "Rio", 500, "Econômica", 10, "Latam", hoje, "A1")
         );
 
         // criação do carrinho 
-        CarrinhoService carrinho = new Carrinho(passagemService);
+        CarrinhoService carrinho = new Carrinho(passagemService); //carrinho depende de passagem e consulta passagens (orquestracao)
         int idUsuario = 1;
 
         // Listar todas as passagens
-        System.out.println("\nPASSAGENS AÉREAS DISPONÍVEIS");
-        for (PassagemAerea p : passagemService.listarPassagensAereas()) {
-            System.out.println(
-                    "ID: " + p.getId() +
-                    " | " + p.getOrigem() +
-                    " -> " + p.getDestino() +
-                    " | Preço: " + p.getPreco() +
-                    " | Classe: " + p.getClasse() +
-                    " | Companhia: " + p.getCompanhia() +
-                    " | Quantidade: " + p.getQtd() +
-                    " | Data: " + p.getData()
-            );
-        }
+        
+        Gson gson = new Gson();
+
+        System.out.println("\nPASSAGENS EM JSON:");
+        String json = gson.toJson(passagemService.listarPassagensAereas());
+        System.out.println(json);
 
         //FILTRO POR DESTINO
         System.out.println("\nFILTRAR PASSAGENS (Destino = Rio)");
@@ -50,14 +44,8 @@ public class Main {
         filtros.put("destino", "Rio");
         List<Passagem> filtradas = passagemService.filtrarPassagens(filtros);
 
-        for (Passagem p : filtradas) {
-            System.out.println(
-                    "ID: " + p.getId() +
-                    " | " + p.getOrigem() +
-                    " -> " + p.getDestino() +
-                    " | Preço: " + p.getPreco()
-            );
-        }
+        System.out.println("\nFILTRAR PASSAGENS (Destino = Rio) - JSON:");
+        System.out.println(gson.toJson(filtradas));
 
         //FILTRO POR COMPANHIA
         System.out.println("\nFILTRAR PASSAGENS (Companhia = Gol)");
@@ -65,67 +53,41 @@ public class Main {
         filtros.put("companhia", "Gol");
         filtradas = passagemService.filtrarPassagens(filtros);
 
-        for (Passagem p : filtradas) {
-            System.out.println(
-                    "ID: " + p.getId() +
-                    " | " + p.getOrigem() +
-                    " -> " + p.getDestino() +
-                    " | Companhia: " + p.getCompanhia() +
-                    " | Preço: " + p.getPreco()
-            );
-        }
+        System.out.println("\nFILTRAR PASSAGENS (Companhia = Gol) - JSON:");
+        System.out.println(gson.toJson(filtradas));
 
         //FILTRO POR CLASSE
-        System.out.println("\nFILTRAR PASSAGENS (Classe = Econômica)");
+        System.out.println("\nFILTRAR PASSAGENS (Classe = Econômica) - JSON");
+
         filtros.clear();
         filtros.put("classe", "Econômica");
+
         filtradas = passagemService.filtrarPassagens(filtros);
 
-        for (Passagem p : filtradas) {
-            System.out.println(
-                    "ID: " + p.getId() +
-                    " | " + p.getOrigem() +
-                    " -> " + p.getDestino() +
-                    " | Classe: " + p.getClasse()
-            );
-        }
+        System.out.println(gson.toJson(filtradas));
 
         //FILTRO COMBINADO
-        System.out.println("\nFILTRAR PASSAGENS (Origem = São Paulo + Destino = Rio)");
+       System.out.println("\nFILTRAR PASSAGENS (Origem = São Paulo + Destino = Rio) - JSON");
+
         filtros.clear();
         filtros.put("origem", "São Paulo");
         filtros.put("destino", "Rio");
+
         filtradas = passagemService.filtrarPassagens(filtros);
 
-        for (Passagem p : filtradas) {
-            System.out.println(
-                    "ID: " + p.getId() +
-                    " | " + p.getOrigem() +
-                    " -> " + p.getDestino() +
-                    " | Preço: " + p.getPreco()
-            );
-        }
+        System.out.println(gson.toJson(filtradas));
 
         // CARRINHO
         System.out.println("\nADICIONANDO PASSAGENS AO CARRINHO");
-        carrinho.adicionarItem(idUsuario, 1, 1);
+        carrinho.adicionarItem(idUsuario, 1, 1); //Carrinho faz uma requisição para o serviço de passagens:
         carrinho.adicionarItem(idUsuario, 2, 2);
 
         // Listar carrinho
-        System.out.println("\nITENS NO CARRINHO");
+        System.out.println("\nITENS NO CARRINHO - JSON");
+
         List<Passagem> itensCarrinho = carrinho.listarItens(idUsuario);
 
-        for (int i = 0; i < itensCarrinho.size(); i++) {
-            Passagem p = itensCarrinho.get(i);
-            System.out.println(
-                    "Item " + i + " " + 
-                    p.getOrigem() +
-                    " -> " + p.getDestino() +
-                    " | Companhia: " + p.getCompanhia() +
-                    " | Preço: " + p.getPreco() +
-                    " | Data: " + p.getData()
-            );
-        }
+        System.out.println(gson.toJson(itensCarrinho));
 
         // Calcular total
         double total = carrinho.calcularTotal(idUsuario);
@@ -137,17 +99,11 @@ public class Main {
         System.out.println("\nCARRINHO ATUALIZADO");
         itensCarrinho = carrinho.listarItens(idUsuario);
 
-        for (int i = 0; i < itensCarrinho.size(); i++) {
-            Passagem p = itensCarrinho.get(i);
-            System.out.println(
-                    "Item " + i + " "
-                    p.getOrigem() +
-                    " -> " + p.getDestino() +
-                    " | Companhia: " + p.getCompanhia() +
-                    " | Preço: " + p.getPreco() +
-                    " | Data: " + p.getData()
-            );
-        }
+       System.out.println("\nCARRINHO ATUALIZADO - JSON");
+
+        itensCarrinho = carrinho.listarItens(idUsuario);
+
+        System.out.println(gson.toJson(itensCarrinho));
         System.out.println("\nTOTAL ATUALIZADO: " + carrinho.calcularTotal(idUsuario));
     }
 }

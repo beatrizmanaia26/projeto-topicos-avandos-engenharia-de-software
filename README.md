@@ -229,3 +229,42 @@ O programa irá executar alguns testes demonstrando:
 
 ---
 
+
+## compilar 
+javac -cp .:gson-2.10.1.jar *.java
+java -cp .:gson-2.10.1.jar Main
+
+java Main 
+
+# LAB8: Construção de Serviços
+
+## 1 Cenário:
+
+Sistema de compra de passagens aéreas
+
+Serviços:
+
+PassagemService → gerencia passagens <br>
+CarrinhoService → gerencia carrinho do usuário
+
+## 2. Estilo de coordenação
+
+Orquestração
+
+Foi adotado o estilo de orquestração, pois o serviço de carrinho centraliza o fluxo da aplicação, sendo responsável por coordenar as interações com o serviço de passagens. Dessa forma, o CarrinhoService decide quando e como consumir o PassagemService, garantindo maior controle sobre o processo de adição e validação de itens no carrinho.
+
+## 3  Impleentação 
+
+(Tudo que é serviço é implementado como API)
+
+Serviço 1 — Passagem (API)
+
+endpoint: GET /passagens/{id}
+
+retorna JSON: 
+{
+  "id": 1,
+  "origem": "São Paulo",
+  "destino": "Rio",
+  "preco": 500.0
+}

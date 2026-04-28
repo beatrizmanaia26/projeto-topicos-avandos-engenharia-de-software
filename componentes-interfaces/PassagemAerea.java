@@ -5,12 +5,12 @@ public class PassagemAerea extends Passagem implements PassagemService {
 
     private List<PassagemAerea> passagens = new ArrayList<>();
 
-    public PassagemAerea(int id, String origem, String destino, double preco, String classe, int qtd, String companhia, Date data) {
-        super(id, origem, destino, preco, classe, qtd, companhia, data);
+    public PassagemAerea(int id, String origem, String destino, double preco, String classe, int qtd, String companhia, Date data, String assento) {
+        super(id, origem, destino, preco, classe, qtd, companhia, data, assento);
     }
 
     public PassagemAerea() {
-        super(0, "", "", 0, "", 1, "", new Date());
+        super(0, "", "", 0, "", 1, "", new Date(), "A1");
     }
     public void adicionarPassagem(PassagemAerea p) {
         passagens.add(p);
