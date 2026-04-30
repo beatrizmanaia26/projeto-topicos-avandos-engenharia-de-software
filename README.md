@@ -280,3 +280,12 @@ mvn spring-boot:run
 curl -X POST http://localhost:8080/carrinho/1/itens \
   -H "Content-Type: application/json" \
   -d '{"idPassagem":1,"qtd":1}'
+
+
+## Validar testes unitários
+
+-na pasta componentes-interfaces rode "mvn clean test"
+
+## Validar teste integrado:
+
+-na pasta componentes-interfaces rode "mvn-Dtest=CarrinhoIntegrationTest test"

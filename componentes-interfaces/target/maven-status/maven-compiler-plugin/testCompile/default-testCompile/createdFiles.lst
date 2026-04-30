@@ -1,0 +1,6 @@
+com/exemplo/passagens/service/PassagemAereaServiceTest.class
+com/exemplo/passagens/controller/HomeControllerTest.class
+com/exemplo/passagens/service/CarrinhoTest.class
+com/exemplo/passagens/integration/CarrinhoIntegrationTest.class
+com/exemplo/passagens/controller/PassagemControllerTest.class
+com/exemplo/passagens/controller/CarrinhoControllerTest.class
