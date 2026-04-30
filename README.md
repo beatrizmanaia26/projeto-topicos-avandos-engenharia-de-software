@@ -268,3 +268,15 @@ retorna JSON:
   "destino": "Rio",
   "preco": 500.0
 }
+
+## Rodar API
+Volta para a pasta do projeto:
+cd /workspaces/projeto-topicos-avandos-engenharia-de-software/componentes-interfaces
+Roda a API:
+mvn spring-boot:run
+
+
+#Item no carrinho 
+curl -X POST http://localhost:8080/carrinho/1/itens \
+  -H "Content-Type: application/json" \
+  -d '{"idPassagem":1,"qtd":1}'
