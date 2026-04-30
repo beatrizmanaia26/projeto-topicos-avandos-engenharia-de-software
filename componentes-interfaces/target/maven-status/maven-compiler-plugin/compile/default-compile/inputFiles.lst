@@ -1,0 +1,11 @@
+/workspaces/projeto-topicos-avandos-engenharia-de-software/componentes-interfaces/src/main/java/com/exemplo/passagens/model/PassagemAerea.java
+/workspaces/projeto-topicos-avandos-engenharia-de-software/componentes-interfaces/src/main/java/com/exemplo/passagens/controller/CarrinhoController.java
+/workspaces/projeto-topicos-avandos-engenharia-de-software/componentes-interfaces/src/main/java/com/exemplo/passagens/service/PassagemAereaService.java
+/workspaces/projeto-topicos-avandos-engenharia-de-software/componentes-interfaces/src/main/java/com/exemplo/passagens/service/Carrinho.java
+/workspaces/projeto-topicos-avandos-engenharia-de-software/componentes-interfaces/src/main/java/com/exemplo/passagens/ApiPassagensApplication.java
+/workspaces/projeto-topicos-avandos-engenharia-de-software/componentes-interfaces/src/main/java/com/exemplo/passagens/service/PassagemService.java
+/workspaces/projeto-topicos-avandos-engenharia-de-software/componentes-interfaces/src/main/java/com/exemplo/passagens/service/CarrinhoService.java
+/workspaces/projeto-topicos-avandos-engenharia-de-software/componentes-interfaces/src/main/java/com/exemplo/passagens/controller/PassagemController.java
+/workspaces/projeto-topicos-avandos-engenharia-de-software/componentes-interfaces/src/main/java/com/exemplo/passagens/model/Passagem.java
+/workspaces/projeto-topicos-avandos-engenharia-de-software/componentes-interfaces/src/main/java/com/exemplo/passagens/dto/AdicionarItemRequest.java
+/workspaces/projeto-topicos-avandos-engenharia-de-software/componentes-interfaces/src/main/java/com/exemplo/passagens/controller/HomeController.java
