@@ -272,11 +272,13 @@ retorna JSON:
 ## Rodar API
 Volta para a pasta do projeto:
 cd /workspaces/projeto-topicos-avandos-engenharia-de-software/componentes-interfaces
+
 Roda a API:
 mvn spring-boot:run
 
 
-#Item no carrinho 
+## Adicionar itens no carrinho 
+no terminal, coloque:
 curl -X POST http://localhost:8080/carrinho/1/itens \
   -H "Content-Type: application/json" \
   -d '{"idPassagem":1,"qtd":1}'
@@ -289,3 +291,21 @@ curl -X POST http://localhost:8080/carrinho/1/itens \
 ## Validar teste integrado:
 
 -na pasta componentes-interfaces rode "mvn-Dtest=CarrinhoIntegrationTest test"
+
+## Ver aplicação funcional:
+
+-adicionar no final da URL "/passagens/1"
+
+-adicionar no final da URL "/passagens"
+
+-adicionar no final da URL "/passagens/filtrar?destino=Rio"
+
+-adicionar no final da URL "/passagens/filtrar?origem=São%20Paulo"
+
+-adicionar no final da URL "/passagens/filtrar?companhia=Latam"
+
+-adicionar no final da URL "/passagens/filtrar?classe=Econômica"
+
+-adicionar no final da URL "/carringo/1/itens"
+
+-adicionar no final da URL "/carringo/1/total"
